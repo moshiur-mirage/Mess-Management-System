@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 5.7.28, for Linux (x86_64)
+CREATE DATABASE  IF NOT EXISTS `MessManagement` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `MessManagement`;
+-- MySQL dump 10.13  Distrib 5.7.29, for Linux (x86_64)
 --
--- Host: localhost    Database: moshiur1251962
+-- Host: localhost    Database: MessManagement
 -- ------------------------------------------------------
--- Server version	5.7.28
+-- Server version	5.7.29-0ubuntu0.18.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -45,30 +47,6 @@ LOCK TABLES `basic_cost` WRITE;
 /*!40000 ALTER TABLE `basic_cost` DISABLE KEYS */;
 INSERT INTO `basic_cost` VALUES (1,12000,25,45,569,666,666,'666','499','2019-12-04'),(2,12000,25,45,569,666,666,'666','499','2019-12-04');
 /*!40000 ALTER TABLE `basic_cost` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `deposit_1`
---
-
-DROP TABLE IF EXISTS `deposit_1`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `deposit_1` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `date` date DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `deposit_1`
---
-
-LOCK TABLES `deposit_1` WRITE;
-/*!40000 ALTER TABLE `deposit_1` DISABLE KEYS */;
-/*!40000 ALTER TABLE `deposit_1` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -124,7 +102,7 @@ CREATE TABLE `members` (
 
 LOCK TABLES `members` WRITE;
 /*!40000 ALTER TABLE `members` DISABLE KEYS */;
-INSERT INTO `members` VALUES (1,'jj',14,11111,'jjhjh',22222,55555555,'2019-12-05'),(2,'ahmed',25,55555,'dhaka',555555,555555,'2019-12-05');
+INSERT INTO `members` VALUES (1,'jj',14,11111,'jjhjh',22222,55555555,'2019-12-05'),(2,'ahmed',45,45,'5',45,45,'2020-03-13');
 /*!40000 ALTER TABLE `members` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -144,8 +122,8 @@ CREATE TABLE `nn` (
   `date` date DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_nn_1_idx` (`name`),
-  CONSTRAINT `fk_nn_1` FOREIGN KEY (`name`) REFERENCES `members` (`name`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_nn_1` FOREIGN KEY (`name`) REFERENCES `members` (`name`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -154,16 +132,37 @@ CREATE TABLE `nn` (
 
 LOCK TABLES `nn` WRITE;
 /*!40000 ALTER TABLE `nn` DISABLE KEYS */;
-INSERT INTO `nn` VALUES (4,'ahmed',2,'0','0','2019-12-05'),(5,'jj',0,'0','200','2019-12-11'),(6,'ahmed',2,'0','0','2019-12-05'),(7,'ahmed',0,'200','0','2019-12-04'),(8,'jj',0,'50','0','2019-12-04'),(9,'ahmed',0,'0','5000','2019-12-20');
+INSERT INTO `nn` VALUES (4,'ahmed',2,'0','0','2019-12-05'),(5,'jj',0,'0','200','2019-12-11'),(6,'ahmed',2,'0','0','2019-12-05'),(7,'ahmed',0,'200','0','2019-12-04'),(8,'jj',0,'50','0','2019-12-04'),(9,'ahmed',0,'0','5000','2019-12-20'),(10,'jj',2,'0','0','2020-03-05'),(11,'ahmed',0,'0','200','2020-03-05'),(12,'ahmed',0,'500','0','2020-03-02');
 /*!40000 ALTER TABLE `nn` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'moshiur1251962'
+-- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
--- Dumping routines for database 'moshiur1251962'
+-- Dumping data for table `user`
+--
+
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'admin','1234'),(2,'mirage','1212');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'MessManagement'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -175,4 +174,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-14  0:08:30
+-- Dump completed on 2020-03-10 23:59:05
